@@ -1,0 +1,69 @@
+.food-marquee {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.food-marquee-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.food-marquee-row-left {
+  top: 80px;
+}
+
+.food-marquee-row-right {
+  bottom: 120px;
+}
+
+.food-marquee-track {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.food-marquee-row-left .food-marquee-track {
+  animation: marqueeLeft 28s linear infinite;
+}
+
+.food-marquee-row-right .food-marquee-track {
+  animation: marqueeRight 28s linear infinite;
+}
+
+@keyframes marqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.food-marquee-item {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.food-marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-marquee-row-left,
+  .food-marquee-row-right {
+    animation: none;
+  }
+}

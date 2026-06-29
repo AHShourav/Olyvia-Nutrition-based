@@ -1,0 +1,444 @@
+.stats-page {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.stats-loading {
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+  padding: 24px;
+}
+
+.stats-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+}
+
+/* 1. Today Snapshot */
+.stats-snapshot {
+  margin-bottom: 20px;
+}
+
+.stats-rings-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.stats-ring-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+}
+
+.stats-ring-container {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.stats-ring-svg {
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+}
+
+.stats-ring-bg {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.06);
+  stroke-width: 3;
+}
+
+.stats-ring-fill {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 180ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.stats-ring-good {
+  stroke: #059669;
+}
+
+.stats-ring-ok {
+  stroke: #d97706;
+}
+
+.stats-ring-over {
+  stroke: #c53030;
+}
+
+.stats-ring-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.stats-ring-label {
+  font-size: 10px;
+  color: #666;
+  letter-spacing: 0.02em;
+}
+
+.stats-ring-pct {
+  font-size: 9px;
+  color: #999;
+}
+
+.stats-ring-remove {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  color: #666;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.stats-ring-remove::before {
+  content: "×";
+}
+
+.stats-ring-remove:hover {
+  background: rgba(197, 48, 48, 0.15);
+  color: #c53030;
+}
+
+.stats-add-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.stats-add-ring:hover {
+  border-color: #669eff;
+  background: rgba(102, 158, 255, 0.06);
+}
+
+.stats-add-icon {
+  font-size: 18px;
+  color: #999;
+  line-height: 1;
+}
+
+.stats-add-ring:hover .stats-add-icon {
+  color: #669eff;
+}
+
+.stats-micro-feedback {
+  font-size: 12px;
+  color: #666;
+  margin: 10px 0 0;
+  line-height: 1.4;
+}
+
+/* Nutrient picker modal */
+.stats-picker-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.stats-picker-modal {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  max-width: 320px;
+  width: 100%;
+}
+
+.stats-picker-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+}
+
+.stats-picker-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stats-picker-option {
+  padding: 8px 14px;
+  font-size: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.stats-picker-option:hover {
+  background: rgba(102, 158, 255, 0.12);
+  border-color: rgba(102, 158, 255, 0.3);
+  color: #669eff;
+}
+
+.stats-picker-close {
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.stats-picker-close:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* 2. Health Impact - Redesigned */
+.stats-section {
+  margin-bottom: 20px;
+}
+
+.stats-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.stats-impact-subtitle-top {
+  font-size: 11px;
+  color: #666;
+  margin: 0 0 8px;
+}
+
+.stats-impact-card {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stats-impact-low {
+  border-left: 3px solid #059669;
+}
+
+.stats-impact-moderate {
+  border-left: 3px solid #d97706;
+}
+
+.stats-impact-elevated {
+  border-left: 3px solid #c53030;
+}
+
+.stats-impact-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.stats-impact-badge {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.stats-impact-badge-low {
+  color: #059669;
+}
+
+.stats-impact-badge-moderate {
+  color: #d97706;
+}
+
+.stats-impact-badge-elevated {
+  color: #c53030;
+}
+
+.stats-impact-subtitle {
+  font-size: 11px;
+  color: #666;
+}
+
+.stats-impact-summary {
+  font-size: 13px;
+  color: #444;
+  margin: 0 0 4px;
+  line-height: 1.45;
+}
+
+.stats-impact-arrow {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.25);
+  margin: 18px 0;
+  line-height: 1;
+}
+
+.stats-impact-conditions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.stats-impact-condition-card {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.6);
+  min-width: 120px;
+  max-width: 160px;
+}
+
+.stats-impact-condition {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.stats-impact-chip {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.stats-impact-chip-high {
+  background: rgba(197, 48, 48, 0.12);
+  color: #c53030;
+}
+
+.stats-impact-chip-moderate {
+  background: rgba(217, 119, 6, 0.12);
+  color: #d97706;
+}
+
+.stats-impact-chip-watch {
+  background: rgba(100, 116, 139, 0.12);
+  color: #64748b;
+}
+
+.stats-impact-cause {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.stats-impact-contributors {
+  padding: 0;
+  margin-top: 4px;
+}
+
+.stats-impact-contributors-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stats-impact-contributors-list {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.4;
+}
+
+.stats-impact-action {
+  padding: 14px 0 0;
+  margin-top: 4px;
+}
+
+.stats-impact-action-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stats-impact-action-text {
+  font-size: 15px;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 3. Trend chart */
+.stats-chart-wrap {
+  height: 160px;
+  margin-bottom: 8px;
+}
+
+.stats-trend-note {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+
+/* 4. Insights */
+.stats-insights {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.stats-insight-line {
+  font-size: 12px;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+
+.stats-insight-line:last-child {
+  margin-bottom: 0;
+}

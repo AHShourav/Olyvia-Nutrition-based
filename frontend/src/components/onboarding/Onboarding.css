@@ -1,0 +1,221 @@
+/* Onboarding – minimalistic, matches auth/main */
+.onboarding-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f5f7;
+}
+
+.onboarding-progress {
+  height: 3px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.onboarding-progress-fill {
+  height: 100%;
+  background: #669eff;
+  transition: width 180ms ease-out;
+}
+
+.onboarding-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.onboarding-heading {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.onboarding-text {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.onboarding-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+
+.onboarding-input {
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+  outline: none;
+}
+
+.onboarding-input::placeholder {
+  color: #999;
+}
+
+.onboarding-input:focus {
+  border-color: #669eff;
+}
+
+.onboarding-error {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: #c53030;
+}
+
+.onboarding-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.onboarding-btn {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  background: #669eff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 150ms;
+}
+
+.onboarding-btn:hover:not(:disabled) {
+  background: #5588ee;
+}
+
+.onboarding-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.onboarding-btn-secondary {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  transition: background 150ms;
+}
+
+.onboarding-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.onboarding-list {
+  margin: 0 0 24px;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.onboarding-subtitle {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: #999;
+}
+
+.onboarding-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+
+.onboarding-options-multi {
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 320px;
+}
+
+.onboarding-option {
+  padding: 12px 16px;
+  font-size: 14px;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.onboarding-option:hover {
+  border-color: #669eff;
+}
+
+.onboarding-option.selected {
+  border-color: #669eff;
+  background: rgba(102, 158, 255, 0.1);
+  color: #669eff;
+}
+
+.onboarding-nutrition-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+
+.onboarding-rule-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.onboarding-rule-label {
+  font-size: 14px;
+  color: #333;
+  flex: 1;
+}
+
+.onboarding-rule-desc {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0 0;
+}
+
+.onboarding-condition-strictness {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+
+.onboarding-condition-strictness .onboarding-rule-row {
+  align-items: flex-start;
+}
+
+.onboarding-select {
+  padding: 8px 12px;
+  font-size: 13px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  min-width: 100px;
+}

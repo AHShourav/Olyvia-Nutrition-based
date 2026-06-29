@@ -1,0 +1,56 @@
+# Olyvia COMM - Render Blueprint
+# Deploys: PostgreSQL, Django backend, React frontend
+# https://render.com/docs/blueprint-spec
+
+databases:
+  - name: olyvia-db
+    plan: free
+    databaseName: olyvia
+    user: olyvia
+
+services:
+  # Django backend API
+  - type: web
+    name: olyvia-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: ./build.sh
+    startCommand: gunicorn config.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: olyvia-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: "4"
+      - key: PYTHON_VERSION
+        value: "3.12"
+      # Add these in Render Dashboard after deploy (sync: false means prompt for value)
+      - key: USDA_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://olyvia-frontend.onrender.com
+
+  # React frontend (static site)
+  - type: web
+    name: olyvia-frontend
+    runtime: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install ; npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # Backend URL - update in Dashboard if your backend has a different URL
+      - key: VITE_API_URL
+        value: https://olyvia-backend.onrender.com

@@ -1,0 +1,13 @@
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+db.sqlite3
+backend/staticfiles/
+olyvia-commercial-01ae079456ba.json
+docs/
+
+# Node
+node_modules/
+frontend/dist/
